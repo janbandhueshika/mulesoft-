@@ -33,9 +33,9 @@ public class InsertApp {
     public static void main(String[] args) {
 
         InsertApp app = new InsertApp();
-        app.insert("Black Widow","Scarlett Johanson","Florence pugh","Cate Shortland",2021);
-        app.insert("Shang-chi and the legend of the ten rings","Simu liu","Awkwafina","Destin Daniel Cretton",2021);
-        app.insert("The avengers", "Robert Downey Jr.","Scarlett Johanson","Joss Whedon", 2012);
+        app.insert("Black Widow",2021);
+        app.insert("Shang-chi and the legend of the ten rings",2021);
+        app.insert("The avengers", "Robert Downey Jr.",2012);
     }
 
 }
