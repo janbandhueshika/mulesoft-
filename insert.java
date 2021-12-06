@@ -8,7 +8,6 @@ import java.sql.SQLException;
 public class InsertApp {
 
     private Connection connect() {
-        // SQLite connection string
         String url = "jdbc:sqlite:C://sqlite/db/Movies.db";
         Connection conn = null;
         try {
@@ -19,11 +18,17 @@ public class InsertApp {
         return conn;
     }
 
-    public void insert(String name, double capacity) {
-        String sql = "INSERT INTO Movies(name,actor,actress,director,year) VALUES(?,?)";
+    public void insert(String name, String actor, String actress, String director, double year) {
+        String sql = "INSERT INTO Movies(name,actor,actress,director,year) VALUES(?,?,?,?,?)";
+        		
 
         try (Connection conn = this.connect();
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        	pstmt.setString(1, name);
+        	pstmt.setString(2, actor);
+        	pstmt.setString(3, actress);
+        	pstmt.setString(4, director);
+        	pstmt.setDouble(5, year);
             pstmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -33,9 +38,9 @@ public class InsertApp {
     public static void main(String[] args) {
 
         InsertApp app = new InsertApp();
-        app.insert("Black Widow",2021);
-        app.insert("Shang-chi and the legend of the ten rings",2021);
-        app.insert("The avengers", "Robert Downey Jr.",2012);
+        app.insert("Black Widow","Scarlett Johansson", "Florence Pugh", "Cate Shortland", 2021);
+        app.insert("Shang-chi and the legend of the ten rings","Simu Liu", "Awkwafina","Destin Daniel Cretton",2021);
+        app.insert("The avengers","Robert Downey Jr","Scarlett Johansson","Joss Whedon", 2012);
     }
 
 }
